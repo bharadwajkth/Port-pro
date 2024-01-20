@@ -19,7 +19,6 @@
 
   <link href="./static/main.3f6952e4.css" rel="stylesheet">
 
-
   <style>
     /* Initial style for the image */
     img {
@@ -35,7 +34,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       max-width: 90vw;
-      max-height: 80vh;
+      max-height: 70vh;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -64,8 +63,6 @@
     }
   </style>
 </head>
-
-
 
 <body class="">
   <div id="site-border-left"></div>
@@ -109,57 +106,84 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <img src="./static/assets/images/password-checker-reduced.jpg" class="img-responsive" alt="">
+          <img src="./static/assets/images/email-reduced.jpg" class="img-responsive" alt="">
           <div class="card-container">
             <div class="text-center">
-              <h1 class="h2">001 : PASSWORD CHECKER</h1>
+              <h1 class="h2">003 : EMAIL SENDER</h1>
             </div>
-            <h4>This project checks how many times a particular password has been hacked.</h4>
+            <h4>This project is all about sending a mail using python code</h4>
 
             <blockquote>
-              <p>This project is built using python language and it's library known as hashlib</p>
+              <p>This project is built using python language and it's module called as twilio </p>
             </blockquote>
             <h4>Scroll below for screenshots</h4><br>
             <div class="description-text">
               <u>
-                <h3 style="font-size: 24px;">request_api_data(query_char) function:</h3>
+                <h3 style="font-size: 24px;">Importing Modules:</h3>
+              </u>
+              <p style="font-size: 13px;">The script begins by importing necessary Python modules:
+
+              <ul style="font-size: 13px;">
+                <li>smtplib: for handling the SMTP (Simple Mail Transfer Protocol) communication.</li>
+                <li>EmailMessage: for creating and managing email messages.</li>
+                <li>Template: for string templating using placeholders.</li>
+                <li>Path: for working with file paths.</li>
+                <li>sys: for accessing command-line arguments.<br><br></p>
+                </li>
+              </ul>
+
+              <u>
+                <h3 style="font-size: 24px;">Reading HTML Template:</h3>
               </u>
 
-              <p style="font-size: 13px;">Constructs the URL for the Pwned Passwords API using the first 5 characters of
-                the hashed password (query_char).
-                Makes a GET request to the API and returns the response.<br><br></p>
+              <p style="font-size: 13px;">The script reads the content of an HTML file named index.html using the Path
+                module.
+                The content is then treated as a template using the Template module, allowing for variable
+                substitution.<br><br></p>
               <u>
-                <h3 style="font-size: 24px;">get_password_leaks_count(hashes,hash_to_check) function:</h3></u>
-
-              <p style="font-size: 13px;">Parses the response from the API, which contains a list of hashes and their
-                corresponding counts.
-                Checks if the given hash_to_check is present in the response and returns the corresponding
-                count.<br><br></p>
-              <u>
-                <h3 style="font-size: 24px;">pwned_api_check(password) function:</h3>
+                <h3 style="font-size: 24px;">Creating Email Message:</h3>
               </u>
 
-              <p style="font-size: 13px;">Hashes the input password using SHA-1.
-                Extracts the first 5 characters and the remaining characters from the hashed password.
-                Calls request_api_data to get the response from the Pwned Passwords API.
-                Calls get_password_leaks_count to check if the full hash is present in the API response.<br><br></p>
+              <p style="font-size: 13px;">An EmailMessage object is created to represent the email.
+                The sender is set to 'Python', the recipient is set to the email address provided as a command-line
+                argument (sys.argv[1]).
+                The email subject is set to a predefined string.
+                The HTML content of the email is set by substituting a placeholder ({name}) in the template with the
+                value provided as the
+                second command-line argument (sys.argv[2]).<br><br></p>
               <u>
-                <h3 style="font-size: 24px;">main(args) function:</h3>
+                <h3 style="font-size: 24px;">SMTP Connection:</h3>
               </u>
 
-              <p style="font-size: 13px;">Takes a list of passwords as input arguments.
-                Iterates over each password, calling pwned_api_check for each.
-                Prints whether each password was found in any data breaches or not.<br><br></p>
+              <p style="font-size: 13px;">A connection to the Gmail SMTP server is established using the smtplib.SMTP
+                class.
+                The ehlo() method is called to greet the server, and starttls() is used to initiate a secure connection.
+                The login method is then used to authenticate with the Gmail account by providing the email address and
+                password directly
+                in the script.<br><br></p>
               <u>
-                <h3 style="font-size: 24px;">if __name__ == '__main__': block:</h3>
+                <h3 style="font-size: 24px;">Sending Email:</h3>
               </u>
 
-              <p style="font-size: 13px;">Calls the main function with the command-line arguments.
-                Exits the script with the return value of the main function.<br><br></p>
-              <p style="font-size: 13px;">Overall, this script is a basic implementation of checking if a
-                password has been compromised in known data breaches using the Pwned
-                Passwords API. It's a good practice to use such tools to ensure the security
-                of passwords and encourage users to choose strong and unique passwords.</p>
+              <p style="font-size: 13px;">The prepared email message is sent using the send_message method of the SMTP
+                connection.<br><br></p>
+              <u>
+                <h3 style="font-size: 24px;">Print Success Message:</h3>
+              </u>
+
+              <p style="font-size: 13px;">If the email is sent successfully, the script prints "All good" to indicate
+                that the process completed without errors.<br><br></p>
+              <u>
+                <h3 style="font-size: 24px;">Important notes:</h3>
+              </u>
+
+              <p style="font-size: 13px;">The script relies on command-line arguments, specifically the recipient's
+                email address (sys.argv[1]) and a name for
+                substitution in the HTML template (sys.argv[2]).Security concerns include storing sensitive information
+                (Gmail credentials)
+                directly in the script. Best practices involve using environment variables or a configuration file for
+                such data.</p>
+
             </div>
           </div>
         </div>
@@ -169,23 +193,30 @@
           <div class="col-md-8 col-md-offset-2 section-container-spacer">
             <div class="row">
               <div class="col-xs-12 col-md-6">
-                <img onclick="enlargeImage(this)" src="./static/assets/images/Checkmypassword1.png"
-                  class="img-responsive" alt="">
+                <img onclick="enlargeImage(this)" src="./static/assets/images/Email1.png" class="img-responsive" alt="">
                 <h3 class="centered-text">Code</h3>
               </div>
 
               <div class="col-xs-12 col-md-6">
-                <img onclick="enlargeImage(this)" src="./static/assets/images/Checkmypassword2.png"
-                  class="img-responsive" alt="">
-                <h3 class="centered-text">Input</h3>
+                <img onclick="enlargeImage(this)" src="./static/assets/images/Email2.png" class="img-responsive" alt="">
+                <h3 class="centered-text">HTML Code</h3>
               </div>
 
               <div class="col-xs-12">
-                <img onclick="enlargeImage(this)" src="./static/assets/images/Checkmypassword3.png"
-                  class="img-responsive" alt="">
+                <img onclick="enlargeImage(this)" src="./static/assets/images/Email3.png" class="img-responsive" alt="">
+                <h3 class="centered-text">Input</h3>
+              </div>
+
+              <div class="col-xs-12 col-md-6">
+                <img onclick="enlargeImage(this)" src="./static/assets/images/Email4.png" class="img-responsive" alt="">
                 <h3 class="centered-text">Output</h3>
               </div>
-                <h3><a href="https://github.com/bharadwajkth/Python-projects/blob/main/password-checker/checkmypassword.py" target="_blank">Github_link</a></h3>
+
+              <div class="col-xs-12 col-md-6">
+                <img onclick="enlargeImage(this)" src="./static/assets/images/Email6.png" class="img-responsive" alt="">
+                <h3 class="centered-text">Output</h3><br>
+              </div>
+              <h3><a href="https://github.com/bharadwajkth/Python-projects/tree/main/email-sender" target="_blank">Github_link</a></h3>
             </div>
           </div>
         </div>
@@ -194,6 +225,7 @@
             img.classList.toggle('enlarged');
           }
         </script>
+
 
         <footer class="footer-container text-center">
           <div class="container">

@@ -35,7 +35,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       max-width: 90vw;
-      max-height: 80vh;
+      max-height: 70vh;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -64,8 +64,6 @@
     }
   </style>
 </head>
-
-
 
 <body class="">
   <div id="site-border-left"></div>
@@ -109,57 +107,76 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <img src="./static/assets/images/password-checker-reduced.jpg" class="img-responsive" alt="">
+          <img src="./static/assets/images/scrape-reduced.jpg" class="img-responsive" alt="">
           <div class="card-container">
             <div class="text-center">
-              <h1 class="h2">001 : PASSWORD CHECKER</h1>
+              <h1 class="h2">004 : SCRAPE</h1>
             </div>
-            <h4>This project checks how many times a particular password has been hacked.</h4>
+            <h4>This project is used to scrape web page</h4>
 
             <blockquote>
-              <p>This project is built using python language and it's library known as hashlib</p>
+              <p>This project is built using python language and it's library known as BeautifulSoup</p>
             </blockquote>
             <h4>Scroll below for screenshots</h4><br>
             <div class="description-text">
               <u>
-                <h3 style="font-size: 24px;">request_api_data(query_char) function:</h3>
+                <h3 style="font-size: 24px;">Import Libraries:</h3>
               </u>
 
-              <p style="font-size: 13px;">Constructs the URL for the Pwned Passwords API using the first 5 characters of
-                the hashed password (query_char).
-                Makes a GET request to the API and returns the response.<br><br></p>
+              <p style="font-size: 13px;">The script begins by importing the necessary Python libraries: requests for
+                making HTTP requests and BeautifulSoup for HTML parsing,
+                pprint is imported to pretty-print the output.</p>
               <u>
-                <h3 style="font-size: 24px;">get_password_leaks_count(hashes,hash_to_check) function:</h3></u>
-
-              <p style="font-size: 13px;">Parses the response from the API, which contains a list of hashes and their
-                corresponding counts.
-                Checks if the given hash_to_check is present in the response and returns the corresponding
-                count.<br><br></p>
-              <u>
-                <h3 style="font-size: 24px;">pwned_api_check(password) function:</h3>
+                <h3 style="font-size: 24px;">HTTP Requests:</h3>
               </u>
 
-              <p style="font-size: 13px;">Hashes the input password using SHA-1.
-                Extracts the first 5 characters and the remaining characters from the hashed password.
-                Calls request_api_data to get the response from the Pwned Passwords API.
-                Calls get_password_leaks_count to check if the full hash is present in the API response.<br><br></p>
+              <p style="font-size: 13px;">Two HTTP requests (res and res2) are made to the Hacker News website to fetch
+                the HTML content of the first and second pages.</p>
               <u>
-                <h3 style="font-size: 24px;">main(args) function:</h3>
+                <h3 style="font-size: 24px;">HTML Parsing:</h3>
               </u>
 
-              <p style="font-size: 13px;">Takes a list of passwords as input arguments.
-                Iterates over each password, calling pwned_api_check for each.
-                Prints whether each password was found in any data breaches or not.<br><br></p>
+              <p style="font-size: 13px;">The HTML content of each page is parsed using BeautifulSoup, and the resulting
+                soup objects are named soup and soup2.</p>
               <u>
-                <h3 style="font-size: 24px;">if __name__ == '__main__': block:</h3>
+                <h3 style="font-size: 24px;">Selecting Elements:</h3>
               </u>
 
-              <p style="font-size: 13px;">Calls the main function with the command-line arguments.
-                Exits the script with the return value of the main function.<br><br></p>
-              <p style="font-size: 13px;">Overall, this script is a basic implementation of checking if a
-                password has been compromised in known data breaches using the Pwned
-                Passwords API. It's a good practice to use such tools to ensure the security
-                of passwords and encourage users to choose strong and unique passwords.</p>
+              <p style="font-size: 13px;">CSS selectors are used to extract relevant information from the HTML,
+                specifically article links and subtext.
+                These elements are stored in lists named links, subtext, links2, and subtext2.</p>
+              <u>
+                <h3 style="font-size: 24px;">Combining Lists:</h3>
+              </u>
+
+              <p style="font-size: 13px;">The lists from both pages are combined into mega_links and mega_subtext.</p>
+              <u>
+                <h3 style="font-size: 24px;">Sorting and Filtering:</h3>
+              </u>
+
+              <p style="font-size: 13px;">A function sort_stories_by_votes is defined to sort a list of articles based
+                on their votes in descending order.
+                Another function create_custom_hn is defined to filter articles with votes greater than 99 and then sort
+                them using
+                the previous function.</p>
+              <u>
+                <h3 style="font-size: 24px;">Printing Results:</h3>
+              </u>
+
+              <p style="font-size: 13px;">The sorted and filtered list of articles is printed using pprint.pprint.
+                The output includes article titles, links, and votes, but you can modify the print statement to display
+                only the points if desired.</p>
+              <u>
+                <h3 style="font-size: 24px;">Sequential Points Printing:</h3>
+              </u>
+
+              <p style="font-size: 13px;">The script is modified to iterate through the sorted list and print only the
+                'votes' attribute for each article, giving you the
+                points in sequential order.In summary, the script fetches Hacker News articles, filters them based on
+                votes, and outputs a sorted
+                list containing article titles, links, and votes. The modified version allows you to print only the
+                points in sequential order.</p>
+
             </div>
           </div>
         </div>
@@ -169,23 +186,23 @@
           <div class="col-md-8 col-md-offset-2 section-container-spacer">
             <div class="row">
               <div class="col-xs-12 col-md-6">
-                <img onclick="enlargeImage(this)" src="./static/assets/images/Checkmypassword1.png"
-                  class="img-responsive" alt="">
+                <img onclick="enlargeImage(this)" src="./static/assets/images/scrape1.png" class="img-responsive"
+                  alt="">
                 <h3 class="centered-text">Code</h3>
               </div>
 
               <div class="col-xs-12 col-md-6">
-                <img onclick="enlargeImage(this)" src="./static/assets/images/Checkmypassword2.png"
-                  class="img-responsive" alt="">
+                <img onclick="enlargeImage(this)" src="./static/assets/images/scrape2.png" class="img-responsive"
+                  alt="">
                 <h3 class="centered-text">Input</h3>
               </div>
 
               <div class="col-xs-12">
-                <img onclick="enlargeImage(this)" src="./static/assets/images/Checkmypassword3.png"
-                  class="img-responsive" alt="">
+                <img onclick="enlargeImage(this)" src="./static/assets/images/scrape3.png" class="img-responsive"
+                  alt="">
                 <h3 class="centered-text">Output</h3>
               </div>
-                <h3><a href="https://github.com/bharadwajkth/Python-projects/blob/main/password-checker/checkmypassword.py" target="_blank">Github_link</a></h3>
+              <h3><a href="https://github.com/bharadwajkth/Python-projects/tree/main/web-scrape/scrape.py" target="_blank">Github_link</a></h3>
             </div>
           </div>
         </div>
@@ -194,6 +211,7 @@
             img.classList.toggle('enlarged');
           }
         </script>
+
 
         <footer class="footer-container text-center">
           <div class="container">
